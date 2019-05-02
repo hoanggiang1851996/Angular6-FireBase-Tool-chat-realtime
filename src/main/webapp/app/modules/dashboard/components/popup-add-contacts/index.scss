@@ -1,0 +1,181 @@
+.flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.custom-modal-header {
+    height: 70px;
+    font-weight: 600;
+}
+.modal-title {
+    font-weight: 600;
+}
+.btn-close {
+    padding-right: 30px;
+    font-size: 20px;
+    z-index: 100;
+    position: absolute;
+    cursor: pointer;
+}
+
+.list-conversation {
+    .item {
+        border-bottom: #ced4da;
+        margin-top: 5px;
+        cursor: pointer;
+        &:hover {
+            background: #eeeeee6b;
+        }
+        &:hover .btn-add {
+            display: inline-block;
+        }
+        .conversation__img {
+            border-radius: 50%;
+            overflow: hidden;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+    height: 300px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    max-height: 300px;
+}
+
+.reset-search-input {
+    margin-left: 15px;
+}
+
+.reset-search-input:hover {
+    cursor: pointer;
+}
+
+.search-user {
+    border: none !important;
+    outline: none !important;
+    height: 30px;
+}
+
+.search-conversation {
+    margin-bottom: 20px;
+}
+
+.conversation__title {
+    font-size: 15px;
+    text-decoration: underline;
+}
+.conversation__name {
+    padding: 13px 0;
+    border-bottom: 1px solid #bbbbbb;
+    font-weight: 600;
+}
+.btn-add {
+    right: 23px;
+    padding: 5px 10px;
+    font-size: 14px;
+    top: 7px;
+    display: none;
+}
+
+/* design checkbox */
+.label__checkbox {
+    display: none;
+}
+
+.label__check {
+    display: inline-block;
+    border-radius: 50%;
+    border: 5px solid #2d3436;
+    background: #ffffff;
+    vertical-align: middle;
+    margin-right: 20px;
+    width: 2em;
+    height: 2em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border 0.3s ease;
+
+    i.icon {
+        opacity: 0.2;
+        color: transparent;
+        transition: opacity 0.3s 0.1s ease;
+        -webkit-text-stroke: 3px #2d3436;
+    }
+
+    &:hover {
+        border: 5px solid #2d3436;
+    }
+}
+
+.label__checkbox:checked + .label__text .label__check {
+    animation: check 0.5s cubic-bezier(0.895, 0.03, 0.685, 0.22) forwards;
+
+    .icon {
+        opacity: 1;
+        transform: scale(0);
+        color: #ffffff;
+        animation: icon 0.3s cubic-bezier(1, 0.008, 0.565, 1.65) 0.1s 1 forwards;
+    }
+}
+
+@keyframes icon {
+    from {
+        opacity: 0;
+        transform: scale(0.3);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes check {
+    0% {
+        width: 1.5em;
+        height: 1.5em;
+        border-width: 5px;
+    }
+    10% {
+        width: 1.5em;
+        height: 1.5em;
+        opacity: 0.1;
+        background: #2d3436;
+        border-width: 15px;
+    }
+    12% {
+        width: 1.5em;
+        height: 1.5em;
+        opacity: 0.4;
+        background: #2d3436;
+        border-width: 0;
+    }
+    50% {
+        width: 2em;
+        height: 2em;
+        background: #00d478;
+        border: 0;
+        opacity: 0.6;
+    }
+    100% {
+        width: 2em;
+        height: 2em;
+        background: #00d478;
+        border: 0;
+        opacity: 1;
+    }
+}
+.input-group {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    border: 1px solid #00000040;
+    padding: 4px 0;
+    border-radius: 4px;
+}

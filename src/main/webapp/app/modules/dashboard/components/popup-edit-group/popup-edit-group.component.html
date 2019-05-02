@@ -1,0 +1,51 @@
+<div class="modal-header custom-modal-header position-relative">
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <div class="info-group">
+        <div class="group-heading" *ngFor="let data of groupDataList" >
+            <div class="group-avatar">
+                <div class="position-relative avatar-group">
+                    <img [src]="data.groupAvatar" alt="">
+                    <input type="file" class="upload-img">
+                    <div class="import-user-avatar position-absolute">
+                        <i class="fa fa-camera"></i>
+                    </div>
+
+                </div>
+            </div>
+            <div class="position-relative">
+                <label for="groupTitle" class="position-absolute fa-pencil-alt--position"><i class="fas fa-pencil-alt"></i></label>
+                <input id="groupTitle" type="text" [(ngModel)]="data.groupName" class="w-100 group__title text-center ">
+            </div>
+            <p class="group__created text-center">Create by Duc Dang</p>
+        </div>
+        <div class="group-main">
+            <ul class="group-list">
+                <li class="group__item d-flex align-items-center" (click)="addMemberToGroup()">
+                    <div class="group__item--avatar ">
+                        <img src="../../../../../content/images/a.png" alt="">
+                    </div>
+                    <div class="group__item--name ml-3 position-relative">
+                        Add people
+                    </div>
+                    </li>
+                <li *ngFor="let dataUser of groupDataUserList" class="group__item d-flex align-items-center ">
+                    <div class="group__item--avatar ">
+                        <img [src]="dataUser.avatar" alt="">
+                    </div>
+                    <div class="group__item--name ml-3 position-relative">
+                        {{dataUser.name}}
+                        <button (click)="removeMember(dataUser['id'])" class="btn btn-secondary" title="remove">Remove</button>
+                    </div>
+                </li>
+            </ul>
+            <div class="text-center">
+                <button class="btn btn-danger">Leave Group</button>
+            </div>
+        </div>
+    </div>
+</div>
+

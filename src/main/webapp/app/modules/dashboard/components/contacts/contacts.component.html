@@ -1,0 +1,25 @@
+<div class="sidebar-body">
+    <div class="header-list-contact">
+        <div class="cursor-pointer float-left"><b>My contacts</b></div>
+        <div class="dropdown position-relative">
+            <button class="float-right btn-add-contact" (click)="addContacts()">
+                <i class="fas fa-plus-circle cursor-pointer"></i>
+            </button>
+            <div class="dropdown-menu cursor-pointer dropdown-create-new-chat" aria-labelledby="triggerId">
+                <div class="dropdown-item">New chat</div>
+                <div class="dropdown-item">New group chat</div>
+            </div>
+        </div>
+    </div>
+    <div class="scroll-contacts">
+        <div *ngFor="let contact of contacts; let i = index" [class.active-contact-chat]="selectedIndex === i"  class="list-recent-contact cursor-pointer position-relative" (click)="redirectToChatDetailFromContacts(contact, i)">
+            <div class="avatar-contact float-left">
+                <img src="{{contact.photoURL}}" class="img-avatar-contact">
+            </div>
+            <div *ngIf="statusUsers[i]" class="status-online"></div>
+            <div class="name-chat-contact float-left">
+                <div><b>{{contact.displayName}}</b></div>
+            </div>
+        </div>
+    </div>
+</div>

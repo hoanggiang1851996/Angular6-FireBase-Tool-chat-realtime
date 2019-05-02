@@ -1,0 +1,113 @@
+<form class="form-register col-lg-4 col-8  card z-depth-5" [formGroup]="registerForm"
+      (ngSubmit)="tryRegister(registerForm.value)">
+    <div class="card-header title flex">
+        <h2>REGISTRATION</h2>
+    </div>
+    <div class="card-body form-body">
+        <div class="row element-row">
+            <div class="input-field col s6 form-group">
+                <label for="first_name"><strong>First Name</strong></label>
+                <div class="input-group group-input">
+                    <input
+                        [ngClass]="{'is-invalid': registerForm.get('first_name').touched && registerForm.get('first_name').invalid}"
+                        id="first_name" type="text" class="form-control form-input" formControlName="first_name">
+                    <span class="focus-form-control"></span>
+                    <div class="invalid-feedback">First Name field is required</div>
+                </div>
+            </div>
+        </div>
+        <div class="row element-row">
+            <div class="input-field col s6 form-group">
+                <label for="last_name"><strong>Last Name</strong></label>
+                <div class="input-group group-input">
+                    <input
+                        [ngClass]="{'is-invalid': registerForm.get('last_name').touched && registerForm.get('last_name').invalid}"
+                        id="last_name" type="text" class="form-control form-input" formControlName="last_name">
+                    <span class="focus-form-control"></span>
+                    <div class="invalid-feedback">Last Name field is required</div>
+                </div>
+            </div>
+        </div>
+        <div class="row element-row">
+            <div class="input-field col s12 form-group">
+                <label for="email"><strong>Email</strong></label>
+                <div class="input-group group-input">
+                    <input
+                        [ngClass]="{'is-invalid': registerForm.get('email').touched && registerForm.get('email').invalid}"
+                        id="email" type="email" class="form-control form-input" formControlName="email">
+                    <span class="focus-form-control"></span>
+                    <div *ngIf="registerForm.get('email').touched && registerForm.get('email').invalid"
+                         class="invalid-feedback">
+                        <div *ngIf="registerForm.get('email').errors.required">Email field is required</div>
+                        <div *ngIf="registerForm.get('email').errors.email">Wrong data format!</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row element-row">
+            <div class="input-field col s12 form-group">
+                <label for="password"><strong>Password</strong></label>
+                <div class="input-group group-input">
+                    <input
+                        [ngClass]="{'is-invalid': registerForm.get('password').touched && registerForm.get('password').invalid}"
+                        id="password" type="password" class="form-control form-input" formControlName="password">
+                    <span class="focus-form-control"></span>
+                    <div *ngIf="registerForm.get('password').touched && registerForm.get('password').invalid"
+                         class="invalid-feedback">
+                        <div *ngIf="registerForm.get('password').errors.required">Password field is required</div>
+                        <div *ngIf="registerForm.get('password').errors.minlength">Password is more or equal to 6
+                            characters
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row element-row">
+            <div class="input-field col s12 form-group">
+                <label for="confirm_password"><strong>Confirm password</strong></label>
+                <div class="input-group group-input">
+                    <input
+                        [ngClass]="{'is-invalid': registerForm.get('confirm_password').touched && registerForm.get('confirm_password').invalid}"
+                        id="confirm_password" type="password" class="form-control form-input"
+                        formControlName="confirm_password">
+                    <span class="focus-form-control"></span>
+                    <div
+                        *ngIf="registerForm.get('confirm_password').touched && registerForm.get('confirm_password').invalid"
+                        class="invalid-feedback">
+                        <div *ngIf="registerForm.get('confirm_password').errors.required">Confirm field is required
+                        </div>
+                    </div>
+                    <div
+                        *ngIf="registerForm.get('confirm_password').errors && registerForm.get('confirm_password').errors.ConfirmPassword"
+                        class="invalid-feedback">Confirm password does not match
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row element-row select-language">
+            <div class="form-group col s12">
+                <div class="input-group group-input">
+                    <select
+                        [ngClass]="{'is-invalid': registerForm.get('language').touched && registerForm.get('language').invalid}"
+                        class="form-control form-input" formControlName="language" id="language">
+                        <option [attr.value]="" [attr.disabled]="true" [attr.selected]="true">Chatting Language</option>
+                        <option>English</option>
+                        <option>Japanese</option>
+                    </select>
+                    <span class="focus-form-control"></span>
+                    <div class="invalid-feedback">Language field is required</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="btn-form-register row element-row">
+            <button class="btn btn-outline-danger btn-rounded waves-effect" type="button" routerLink="/login"
+                    name="action">
+                CANCEL
+            </button>
+            <button class="btn btn-outline-primary btn-rounded waves-effect" [disabled]="!registerForm.valid"
+                    type="submit" name="action">REGISTER
+            </button>
+        </div>
+    </div>
+</form>

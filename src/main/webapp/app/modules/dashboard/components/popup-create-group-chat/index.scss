@@ -1,0 +1,261 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.create-new-chat {
+    position: relative;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.custom-modal-header {
+    height: 70px;
+}
+
+.group-name {
+    padding-left: 10px;
+}
+
+.btn-close {
+    padding-right: 35px;
+    font-size: 20px;
+    z-index: 99;
+    position: absolute;
+    cursor: pointer;
+}
+
+.reset-search-input:hover {
+    cursor: pointer;
+}
+
+.search-user {
+    border: none !important;
+    outline: none !important;
+    height: 30px;
+    margin-left: 10px;
+    margin-top: 3px;
+}
+
+.form-search {
+    width: 96.5%;
+    margin-top: 10px;
+}
+
+.file-image {
+    opacity: 0;
+    width: 50px;
+    height: 50px;
+    z-index: 102;
+    position: absolute;
+}
+
+.label-translate {
+    margin-bottom: 0;
+}
+
+.list-contact {
+    flex-direction: column;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 300px;
+}
+
+.item {
+    position: relative;
+    height: 50px;
+    margin-top: 5px;
+}
+
+.icon-camera {
+    position: absolute;
+    z-index: 101;
+}
+
+.item:hover {
+    cursor: pointer;
+}
+
+.item img {
+    border-radius: 50%;
+}
+
+.label-list-contact {
+    margin-top: 10px;
+    font-weight: normal;
+}
+
+.group-avatar-img {
+    z-index: 99;
+    position: absolute;
+    opacity: 1;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid #95a5a6;
+}
+
+.user-status {
+    position: absolute;
+    top: 22px;
+    left: 33px;
+    font-size: 12px;
+    border-radius: 50%;
+}
+
+.user-name {
+    margin-left: 30px;
+}
+
+.custom-title {
+    font-weight: 600;
+}
+
+.user-avatar {
+    width: 45px;
+    height: 45px;
+}
+
+.user-info {
+    right: 70px;
+}
+
+.add-user {
+    right: 0px;
+}
+
+.add-user:focus {
+    border: none;
+    outline: none;
+}
+
+.group-avatar {
+    margin-right: 10px;
+    background-color: #dfe6e9;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+}
+
+.content {
+    margin-top: 5px;
+}
+
+.btn-done {
+    margin-right: 35px;
+    padding: 5px;
+}
+
+.btn-translate {
+    margin-right: 20px;
+}
+
+.custom-modal-footer {
+    height: 70px;
+}
+
+.group-list {
+    list-style: none;
+}
+
+.group__item {
+    cursor: pointer;
+}
+
+.group__item :hover button[title='remove'] {
+    display: inline-block;
+    transition-delay: 2s;
+}
+
+.group__item:hover {
+    background: #eeeeee6b;
+}
+
+.group__item--avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.group__item--name {
+    padding: 12px 0;
+    border-bottom: 1px solid #bbbbbb;
+    flex: 1 1 auto;
+    font-weight: 600;
+}
+
+/* The container */
+.content-checkbox {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 23px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.content-checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    top: -14px;
+    width: 441px;
+    left: -406px;
+    height: 50px;
+}
+
+/* Create a custom checkbox */
+.check-mark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.content-checkbox:hover input ~ .check-mark {
+    background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.content-checkbox input:checked ~ .check-mark {
+    background-color: #2196f3;
+}
+
+/* Create the check-mark/indicator (hidden when not checked) */
+.check-mark:after {
+    content: '';
+    position: absolute;
+    display: none;
+}
+
+/* Show the check-mark when checked */
+.content-checkbox input:checked ~ .check-mark:after {
+    display: block;
+}
+
+/* Style the check-mark/indicator */
+.content-checkbox .check-mark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 15px;
+    border: solid white;
+    border-width: 0px 3px 3px 0px;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}

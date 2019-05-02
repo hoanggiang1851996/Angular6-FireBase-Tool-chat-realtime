@@ -1,0 +1,76 @@
+<form [formGroup]="settingProfileForm"  (ngSubmit)="onSubmit()" action="">
+    <div class="modal-header">
+        <h4 class="modal-title">Setting Screen</h4>
+        <button type="button" class="close" aria-label="Close"
+                (click)="activeModal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body custom-modal-body">
+        <div class="row no-gutters">
+            <div class="col-md-4">
+                <div class="modal-body-items">
+                    <div (click)="openTabSetting()" class=" active item d-flex">
+                        <div class="icon">
+                            <i class="far fa-user"></i>
+                        </div>
+                        <span class="content">My Profile & Account</span>
+                    </div>
+                    <div (click)="openTabConversations()" class="item d-flex">
+                        <div class="icon">
+                            <i class="far fa-comment-alt"></i>
+                        </div>
+                        <span class="content">Conversation</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="mt-2" *ngFor="let userInfo of userInfoList">
+                    <div *ngIf="sateTabs['isTabSetting']" class="info-setting">
+                        <div class="info-user">
+                            <div class="info-img">
+                                <img class="img-fluid" [src]="userInfo['avatar']" alt="">
+                            </div>
+                            <div class="title">{{userInfo['name']}}</div>
+                        </div>
+                        <p class="info-email">
+                            Email: {{userInfo['email']}}
+                        </p>
+                        <a class="info-link" (click)="openPopupChangePassword()">
+                            Change Password
+                        </a>
+                    </div>
+                    <div class="info-conversation" *ngIf="sateTabs['isTabConversations']">
+                        <div>
+                            <a>Setting default information for all conventions</a>
+                        </div>
+                        <div class="d-flex mt-4">
+                            <span class="d-block flex-grow-1">Translate conversations</span>
+                            <div class="flex-grow-1">
+                                <label class="switch">
+                                    <input type="checkbox" [checked]="userInfo['translateConvention']" formControlName="isTranslateConversations">
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="d-flex mt-3">
+                            <span class="d-block flex-grow-1">Display content</span>
+                            <div class="flex-grow-1">
+                                <select class="form-control" formControlName="displayContentOption" >
+                                    <option  *ngFor="let option of userInfo['displayContent']">{{option}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary"
+                (click)="activeModal.dismiss('cancel click')">Cancel
+        </button>
+        <button type="submit" class="btn btn-primary">Save
+        </button>
+    </div>
+</form>

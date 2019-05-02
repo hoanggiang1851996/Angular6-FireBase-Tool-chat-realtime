@@ -1,0 +1,43 @@
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.header-list-recent-chat {
+    padding-bottom: 35px;
+}
+
+.drop-item {
+    padding-left: 5px;
+}
+
+.dropdown-create-new-chat {
+    margin-left: -70px;
+}
+
+.content-chat {
+    font-size: 14px;
+    color: #8a8d91;
+    padding-left: 5px;
+}
+
+.name-chat-contact {
+    padding-left: 5px;
+}
+
+.recent-time {
+    font-size: 14px;
+    color: #8a8d91;
+    padding-top: 2px;
+    padding-right: 3px;
+    float: right;
+}
+
+.active-recent-chats {
+    background: #dcf1fa;
+}
+
+.scroll-recent-chat {
+    height: 73vh;
+    overflow-y: scroll;
+    margin-right: -10px;
+}

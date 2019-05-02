@@ -1,0 +1,103 @@
+<div class="create-new-chat col-12">
+    <div class="modal-header custom-modal-header flex btn-close justify-content-end col-12">
+        <i class="fas fa-times " (click)="activeModal.dismiss()"></i>
+    </div>
+    <div class="modal-header custom-modal-header flex">
+        <h4 class="modal-title custom-title">New group chat</h4>
+    </div>
+    <div class="modal-body content">
+        <form [formGroup]="createGroupForm">
+            <div class="flex">
+                <div class="col-md-11 d-flex align-items-center">
+                    <div class="col-auto mr-auto flex">
+                        <div class="flex group-avatar">
+                            <i class="fa fa-camera icon-camera"></i>
+                            <input type="file" class="file-image form-control" formControlName="group_avatar"
+                                   (change)="importAvatarGroup($event)">
+                            <img *ngIf="createGroupForm.controls.group_avatar.value" class="group-avatar-img" [src]="createGroupForm.controls.group_avatar.value" alt="avatar-group">
+                        </div>
+                        <div class="name-group">
+                            <input class="group-name form-control" placeholder="Group Name" formControlName="group_name">
+                        </div>
+                    </div>
+                    <div class="col-auto d-flex align-items-center btn-translate">
+                        <label class="switch">
+                            <input type="checkbox" class="form-control-input" formControlName="translate">
+                            <span class="slider round"></span>
+                        </label>
+                        <p class="label-translate">Translate</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row flex">
+                <div class="col-md-11">
+                    <div class="input-group col-md-12 form-search form-control">
+                        <input (keyup)="searchContacts()" class="search-user col-11" type="text" placeholder="Search"
+                               formControlName="searchValue" [(ngModel)]="searchValue">
+                        <div class="input-group-append reset-search-input flex">
+                            <i (click)="resetSearchBox()" class="fas fa-times"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 list-contact">
+                <div class="row flex ">
+                    <div class="col-md-11">
+                        <h6 class="col-md-12 label-list-contact">SUGGESTED</h6>
+                        <ul class="group-list" formArrayName="suggestedUsers">
+                            <li *ngFor="let user of createGroupForm['controls'].suggestedUsers['controls']; let i = index"
+                                [formGroupName]="i" class="group__item d-flex align-items-center">
+                                <div class="group__item--avatar ">
+                                    <img class="user-avatar img-fluid" alt="avatar" src="{{user.value.photoURL}}">
+                                </div>
+                                <div class="position-absolute">
+                                    <div *ngIf="statusUsers[i]"
+                                         class="user-status far fa-check-circle text-white bg-success"></div>
+                                    <div class="group__item--name ml-3 position-relative"></div>
+                                </div>
+                                <div class="group__item--name ml-3">
+                                    {{user.value.displayName}}
+                                </div>
+                                <div class="add-user position-absolute">
+                                    <label class="content-checkbox">
+                                        <input class="" type="checkbox" checked="checked" formControlName="attend">
+                                        <span class="check-mark"></span>
+                                    </label>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-11">
+                        <h6 class="col-md-12 label-list-contact">PEOPLE</h6>
+                        <ul class="group-list" formArrayName="users">
+                            <li *ngFor="let user of createGroupForm['controls'].users['controls']; let i = index"
+                                [formGroupName]="i" class="group__item d-flex align-items-center">
+                                <div class="group__item--avatar ">
+                                    <img class="user-avatar img-fluid" alt="avatar" src="{{user.value.photoURL}}">
+                                </div>
+                                <div class="position-absolute">
+                                    <div *ngIf="user.value.online"
+                                         class="user-status far fa-check-circle text-white bg-success"></div>
+                                    <div class="group__item--name ml-3 position-relative"></div>
+                                </div>
+                                <div class="group__item--name ml-3 position-relative">
+                                    {{user.value.displayName}}
+                                </div>
+                                <div class=" add-user position-absolute">
+                                    <label class="content-checkbox">
+                                        <input class="" type="checkbox" checked="checked" formControlName="attend">
+                                        <span class="check-mark"></span>
+                                    </label>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="modal-footer custom-modal-footer">
+    <button [disabled]="createGroupForm.invalid" class="btn btn-primary btn-rounded waves-effect btn-done" (click)="createChat()" type="button">Done
+    </button>
+</div>

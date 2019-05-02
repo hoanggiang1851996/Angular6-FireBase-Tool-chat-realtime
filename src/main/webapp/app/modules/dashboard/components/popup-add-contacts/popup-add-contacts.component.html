@@ -1,0 +1,36 @@
+<div class="modal-header custom-modal-header flex btn-close justify-content-end col-12">
+    <i class="fas fa-times " (click)="activeModal.dismiss()"></i>
+</div>
+<div class="modal-header custom-modal-header flex">
+    <h4 class="modal-title ">Add new contacts</h4>
+</div>
+
+<div class="modal-body">
+    <div class="row flex">
+        <div class="col-md-12">
+            <div class="input-group  form-search">
+                <input (keyup)="searchUsers()" class="search-user col-11" type="text" placeholder="Search"
+                       [(ngModel)]="searchValue">
+                <div class="input-group-append reset-search-input flex">
+                    <i (click)="resetSearchBox()" class="fas fa-times"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="list-conversation mt-2">
+        <div class="item d-flex position-relative" *ngFor="let user of users">
+            <div class="flex-grow-1 d-flex align-items-center">
+                <div class="conversation__img">
+                    <img class="img-fluid" [src]="user.photoURL" alt="">
+                </div>
+                <div class="conversation__name flex-grow-1  ml-2">{{user.displayName}}</div>
+            </div>
+            <button (click)="addContact(user)" type="button"
+                    class="btn-add btn btn-primary btn-rounded waves-effect position-absolute">Add
+            </button>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-dark" (click)="activeModal.close()">Close</button>
+</div>

@@ -1,0 +1,62 @@
+<div class="container-fluid position-relative test">
+
+    <div class="header-sidebar">
+        <div class="avatar float-left position-relative">
+            <img src="{{user.photoURL}}" class="img-avatar">
+        </div>
+        <div class="float-left user-name"><b>{{user.displayName}}</b></div>
+        <div class="status-online"></div>
+        <div class="float-right">
+            <div class="dropdown open">
+                <button id="triggerId" data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false" class="btn-setting">
+                    <i class="fas fa-bars icon-setting"></i>
+                </button>
+                <div class="dropdown-menu cursor-pointer dropdown-setting" aria-labelledby="triggerId">
+                    <button class="dropdown-item" (click)="open()">Setting</button>
+                    <button class="dropdown-item">Help&Feedback</button>
+                    <button class="dropdown-item" (click)="openPopupLogout()">Logout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="search-box">
+        <i class="fas fa-search icon-search-box"></i>
+        <input type="text" placeholder="Search" class="input-search-box" (keyup)="onKey($event)">
+    </div>
+
+    <ngb-tabset type="pills">
+
+        <ngb-tab>
+            <ng-template ngbTabTitle>
+                <div class="text-center">
+                    <i class="far fa-comment-dots icon-chats"></i>
+                </div>
+                <p class="icon-content">Chats</p>
+            </ng-template>
+            <ng-template ngbTabContent>
+                <hr class="line">
+                <jhi-recent-chats [childSearchData]="searchValues"></jhi-recent-chats>
+            </ng-template>
+        </ngb-tab>
+
+        <ngb-tab type="pills">
+            <ng-template ngbTabTitle>
+                <div class="text-center">
+                    <i class="far fa-address-book icon-contacts"></i>
+                </div>
+                <p class="icon-content">Contacts</p>
+            </ng-template>
+            <ng-template ngbTabContent>
+                <hr class="line">
+                <jhi-contacts [childSearchData]="searchValues"></jhi-contacts>
+            </ng-template>
+        </ngb-tab>
+
+        <i class="far fa-address-book icon-contacts"></i>
+
+    </ngb-tabset>
+
+</div>

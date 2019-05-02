@@ -1,0 +1,85 @@
+<div class="container-fluid header-chat-content">
+    <div class="container-chat-name cursor-pointer"><h5 (click)="openPopupEditGroupChat()">{{chatDetail.name}}</h5></div>
+    <div class="position-relative">
+        <div class="container-status">
+            <span *ngIf="statusUser && !chatDetail.isGroup" class="status-online"></span>
+            <span *ngIf="statusUser" class="text-status">Online</span>
+            <span *ngIf="!statusUser && !chatDetail.isGroup">Offline</span>
+            <span *ngIf="chatDetail.isGroup">{{totalMember}} Members</span>
+        </div>
+        <span>|</span>
+        <span>Display</span>
+        <select class="form-control select-option">
+            <option>All</option>
+            <option>Translated</option>
+            <option>Original</option>
+        </select>
+        <span>|</span>
+        <div class="d-flex position-absolute right-icon">
+            <div class="d-flex align-items-end flex-column icon-item">
+                <div class="flex flex-column">
+                    <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider round"></span>
+                    </label>
+                    <p>Translate</p>
+                </div>
+            </div>
+            <div class="d-flex align-items-end flex-column icon-item" (click)="addMember()">
+                <div class="flex flex-column">
+                    <i class="fas fa-user-plus"></i>
+                    <p>Add</p>
+                </div>
+            </div>
+        </div>
+        <span (click)="expandedSearch = !expandedSearch" class="cursor-pointer"><i class="fas fa-search"></i> Find</span>
+        <div *ngIf="expandedSearch" class="search-chat-history">
+            <i class="fas fa-search icon-search-history"></i>
+            <input type="text" placeholder="Find messages in current conversation" class="input-search-history" (keyup)="onKey($event)">
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid body-chat-content">
+    <div *ngFor="let message of messageDetail" class="content">
+
+        <div *ngIf="!message.isSender" class="clear-right">
+            <span class="avatar">
+                <img class="img-avatar" src="{{message.avatar}}">
+            </span>
+            <span class="friend-contact-name">{{message.name}}, {{message.createAt}}</span><br>
+            <span class="message-content">
+                {{message.content}}
+            </span>
+        </div>
+
+        <div *ngIf="message.isSender" class="self-content">
+            <span class="my-message-time float-right">{{message.createAt}}</span><br>
+            <span class="dropdown open icon-three-dot">
+                <button id="triggerId" data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false" class="cursor-pointer btn-three-dot">
+                    <i class="fas fa-ellipsis-v"></i>
+                </button>
+                <div class="dropdown-menu message-menu" aria-labelledby="triggerId">
+                    <button class="dropdown-item cursor-pointer" (click)="editMessage(message)">Edit message</button>
+                    <button class="dropdown-item cursor-pointer" (click)="openPopupConfirmDeleteMessage(message)">Delete message</button>
+                </div>
+            </span>
+            <span class="my-message-content float-right">
+                {{message.content}}
+            </span>
+        </div>
+
+    </div>
+</div>
+
+<div class="container-fluid container-chat-box">
+    <form class="position-relative">
+        <input type="text" class="chat-box" placeholder="Type a message here" [formControl]="newMessage" required>
+        <button *ngIf="!isEditMessage" [disabled]="!newMessage.valid" (click)="sendMessage()" class="btn-send-message"><i
+            class="far fa-paper-plane icon-send-message cursor-pointer"></i></button>
+        <button *ngIf="isEditMessage" [disabled]="!newMessage.valid" (click)="sendEditedMessage()" class="btn-send-message"><i
+            class="far fa-paper-plane icon-send-message cursor-pointer"></i></button>
+    </form>
+</div>

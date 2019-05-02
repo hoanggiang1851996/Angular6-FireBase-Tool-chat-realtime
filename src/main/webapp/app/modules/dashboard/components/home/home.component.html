@@ -1,0 +1,9 @@
+<div class="container-fluid">
+    <div class="welcome">
+        <h2 class="font-weight-bold">Welcome, {{user.displayName}}</h2>
+        <div class="avatar">
+            <img src="{{user.photoURL}}" class="img-avatar">
+        </div>
+        <button (click)="openPopupConversation()" class="btn btn-dark btn-start-conversation">Start A Conversation</button>
+    </div>
+</div>

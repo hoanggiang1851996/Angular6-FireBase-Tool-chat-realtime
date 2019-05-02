@@ -1,0 +1,31 @@
+<div class="sidebar-body">
+    <div class="header-list-recent-chat">
+        <div class="cursor-pointer float-left"><b>Chats</b><i class="fas fa-caret-down drop-item"></i></div>
+        <div class="dropdown position-relative">
+            <button class="float-right btn-add-contact" id="triggerId" data-toggle="dropdown">
+                <i class="fas fa-plus-circle cursor-pointer"></i>
+            </button>
+            <div class="dropdown-menu cursor-pointer dropdown-create-new-chat" aria-labelledby="triggerId">
+                <div class="dropdown-item" (click)="openNewInvididualChat()">New chat</div>
+                <div class="dropdown-item" (click)="openNewGroupChat()">New group chat</div>
+            </div>
+        </div>
+    </div>
+    <div class="scroll-recent-chat" id="style-1">
+        <div *ngFor="let chat of recentChats;let i = index"
+             class="list-recent-contact cursor-pointer position-relative"
+             [style.display]="((messages[i][messages[i].length - 1].content === '') && (chat.isGroup === false)) ? 'none':''"
+             routerLinkActive="active-recent-chats" [routerLink]="['/dashboard', {outlets: {chatDetail: [chat.createAt]}}]">
+            <div class="avatar-contact float-left">
+                <img src="{{chat.avatar}}" class="img-avatar-contact">
+            </div>
+            <div class="name-chat float-left">
+                <div class="name-chat-contact"><b>{{chat.name}}</b></div>
+                <div *ngIf="statusUsers[i]" class="status-online"></div>
+                <div *ngIf="messages[i][messages[i].length - 1].content.length >= 30" class="content-chat">{{messages[i][messages[i].length - 1].content | slice:0:30 }} ...</div>
+                <div *ngIf="messages[i][messages[i].length - 1].content.length < 30" class="content-chat">{{messages[i][messages[i].length - 1].content}}</div>
+            </div>
+            <div class="recent-time">{{chat.timeRecent}}</div>
+        </div>
+    </div>
+</div>

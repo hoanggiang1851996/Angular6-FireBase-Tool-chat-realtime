@@ -1,0 +1,60 @@
+<div class="form-login card">
+    <div class="card-header flex title">
+        <h2>USER LOGIN</h2>
+    </div>
+    <div class="card-body form-body">
+        <form [formGroup]="userForm">
+            <div class="element-row">
+                <div class="col s12 form-group">
+                    <label for="email"><strong>Email</strong></label>
+                    <div class="input-group group-input">
+                        <input (change)="saveCurrentAccount()"
+                               [ngClass]="{'is-invalid': userForm.get('email').touched && userForm.get('email').invalid}"
+                               id="email" type="text" class="form-control form-input" formControlName="email">
+                        <span class="focus-form-control"></span>
+                        <div *ngIf="userForm.get('email').touched && userForm.get('email').invalid"
+                             class="invalid-feedback">
+                            <div *ngIf="userForm.get('email').errors.required">Email field is required</div>
+                            <div *ngIf="userForm.get('email').errors.email">Wrong data format!</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="element-row">
+                <div class="col s12 form-group">
+                    <label for="password"><strong>Password</strong></label>
+                    <div class="input-group group-input">
+                        <input (change)="saveCurrentAccount()"
+                               [ngClass]="{'is-invalid': userForm.get('password').touched && userForm.get('password').invalid}"
+                               id="password" type="password" class="form-control form-input" formControlName="password">
+                        <span class="focus-form-control"></span>
+                        <div *ngIf="userForm.get('password').touched && userForm.get('password').invalid"
+                             class="invalid-feedback">
+                            <div *ngIf="userForm.get('password').errors.required">Password field is required</div>
+                            <div *ngIf="userForm.get('password').errors.minlength">Password is more or equal to 6
+                                characters
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="row element-row">
+            <div>
+                <input type="checkbox" (change)="saveCurrentAccount()" [(ngModel)]="isRemember" id="remember">
+                <span><label for="remember" class="remember-password">Remember me</label></span>
+            </div>
+        </div>
+        <div class="row element-row flex">
+            <button [disabled]="!userForm.valid" (click)="logIn(userForm.value)"
+                    class="btn-submit col-12 btn btn-outline-primary btn-rounded waves-effect" type="submit"
+                    name="action">Log In
+            </button>
+            <button class="btn-submit btn-login-google col-12 btn btn-rounded bg-danger text-white waves-effect" (click)="authService.googleSignin()"><i class="fab fa-google-plus-g"></i> Signin with Google</button>
+        </div>
+        <div class="row element-row form-login-footer">
+            <a routerLink="/register">Register</a>
+            <a routerLink="/forgot-pass">Forgot password</a>
+        </div>
+    </div>
+</div>

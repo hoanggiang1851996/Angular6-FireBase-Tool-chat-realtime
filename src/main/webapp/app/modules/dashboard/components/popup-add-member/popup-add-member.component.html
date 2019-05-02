@@ -1,0 +1,77 @@
+<div class="create-new-chat col-12">
+    <div class="modal-header custom-modal-header flex btn-close justify-content-end col-12">
+        <i class="fas fa-times " (click)="activeModal.dismiss()"></i>
+    </div>
+    <div class="modal-header custom-modal-header flex">
+        <h4 class="modal-title custom-modal-title">Add new members</h4>
+    </div>
+    <div class="modal-body content">
+        <form [formGroup]="addMemberForm">
+            <div class="row flex">
+                <div class="col-md-11">
+                    <div class="input-group col-md-12 form-search form-control">
+                        <input (keyup)="searchContacts()" class="search-user col-11" type="text" placeholder="Search"
+                               formControlName="searchValue">
+                        <div class="input-group-append reset-search-input flex">
+                            <i (click)="resetSearchBox()" class="fas fa-times"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 list-contact">
+                <div class="row flex">
+                    <div class="col-md-11">
+                        <h6 class="col-md-12 label-list-contact">SUGGESTED</h6>
+                        <ul class="list-group col-md-12" formArrayName="suggestedUsers">
+                            <li *ngFor="let user of addMemberForm['controls'].suggestedUsers['controls']; let i = index"
+                                [formGroupName]="i" class="list-group-item flex item">
+                                <div class="d-flex user-info align-items-center">
+                                    <div class=" d-flex align-items-center justify-content-center list-group__img">
+                                        <img class="img-fluid user-avatar " alt="avatar" src="{{user.value.photoURL}}">
+                                        <div *ngIf="statusUsers[i]"
+                                             class="user-status far fa-check-circle text-white bg-success"></div>
+                                    </div>
+                                    <div class="user-name flex-grow-1">{{user.value.displayName}}</div>
+                                    <div class=" add-user position-absolute">
+                                        <label class="content-checkbox">
+                                            <input class="content-checkbox-lg" type="checkbox" checked="checked" formControlName="attend">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-11">
+                        <h6 class="col-md-12 label-list-contact">PEOPLE</h6>
+                        <ul class="list-group col-md-12" formArrayName="users">
+                            <li *ngFor="let user of addMemberForm['controls'].users['controls']; let j = index"
+                                [formGroupName]="j" class="list-group-item flex item">
+                                <div class="flex justify-content-start  position-absolute user-info">
+                                    <div class="list-group__img"><img class="user-avatar img-fluid" alt="avatar"
+                                                                      src="{{user.value.photoURL}}">
+                                    </div>
+                                    <div *ngIf="user.value.online"
+                                         class="user-status far fa-check-circle text-white bg-success"></div>
+                                    <p class="user-name flex-grow-1">{{user.value.displayName}}</p>
+                                </div>
+                                <div class="position-absolute add-user">
+                                    <label class="content-checkbox">
+                                        <input type="checkbox" checked="checked" formControlName="attend">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer custom-modal-footer">
+        <button class="btn-done btn btn-primary btn-rounded waves-effect" type="button" (click)="addMembers()">
+            Done
+        </button>
+    </div>
+
+</div>

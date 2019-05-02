@@ -1,0 +1,71 @@
+// ================= modal setting
+.modal-body-items {
+    border-right: 1px solid #e9ecef;
+    min-height: 400px;
+    .item {
+        border-bottom: 1px solid #e9ecef;
+        cursor: pointer;
+        .icon {
+            flex-basis: 45px;
+            font-size: 25px;
+            text-align: center;
+
+            i {
+                vertical-align: bottom;
+            }
+        }
+        .content {
+            flex-grow: 1;
+            padding: 15px 0;
+            font-weight: 600;
+        }
+    }
+}
+
+.info-setting {
+    padding-left: 35px;
+    .info-user {
+        display: flex;
+        align-items: center;
+        padding-top: 30px;
+        .info-img {
+            width: 110px;
+            height: 110px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            overflow: hidden;
+            & > img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .title {
+            margin-left: 30px;
+            font-size: 30px;
+            font-weight: 600;
+        }
+    }
+    .info-email {
+        margin: 15px 0 0 0;
+    }
+    .info-link {
+        color: #3e8acc;
+        text-decoration: underline;
+        font-weight: 400;
+    }
+}
+
+.info-conversation {
+    padding-left: 35px;
+}
+
+.custom-modal-body {
+    padding: 0;
+}
+select.form-control[formControlName='displayContentOption'] {
+    width: 47%;
+    padding: 0;
+}
+// end modal setting

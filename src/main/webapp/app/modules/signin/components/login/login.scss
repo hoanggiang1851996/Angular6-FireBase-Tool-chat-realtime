@@ -1,0 +1,92 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.invalid-feedback {
+    position: absolute;
+    margin-top: 40px;
+}
+
+.form-login {
+    width: 440px;
+    position: relative;
+    padding: 0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+}
+
+.form-body {
+    padding: 0 30px 30px 30px;
+}
+
+.form-group {
+    padding: 0;
+}
+
+.btn-submit {
+    border-radius: 5px;
+    text-align: center;
+    padding: 5px;
+}
+
+.btn-login-google {
+    margin-top: 10px;
+}
+
+.element-row {
+    margin: 20px 0 0 0;
+}
+
+.remember-password {
+    font-size: 14px;
+}
+
+.remember-password:hover {
+    cursor: pointer;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-login-footer {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-login-footer a {
+    color: #000 !important;
+}
+
+.group-input {
+    border: 1px solid #e6e6e6;
+    display: flex;
+}
+
+.title {
+    background-color: #00b8f0;
+    color: #ffffff;
+    height: 8vh;
+}
+
+.form-input {
+    outline: none;
+    border: none;
+    background: transparent;
+    color: #555555;
+    padding: 0 5px 0 5px;
+}
+
+@media screen and (max-width: 767px) {
+    .form-login {
+        margin-top: 30px;
+    }
+
+    .form-input {
+        padding: 0 0px 0 10px;
+    }
+}
